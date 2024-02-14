@@ -73,7 +73,7 @@ input {
 }
 .drawer-container {
   position: relative;
-  width: 300px;
+  width: 50svw;
   height: 400px;
   justify-content: flex-start;
   border: 1px solid var(--border);
@@ -183,9 +183,10 @@ input {
   display: flex;
 }
 .chat-row svg {
-  width: 30em;
+  width: 5em;
   padding: 0 1em;
   opacity: 0.2;
+  flex-shrink: 0;
 }
 .chat-row .name,
 .header-container .name {
