@@ -107,6 +107,7 @@ input {
   border-radius: 15px;
   max-width: 95%;
   min-width: 50px;
+  overflow-wrap: break-word;
 }
 .chat-bubble.bubble-right {
   background-color: var(--bubble-right);
