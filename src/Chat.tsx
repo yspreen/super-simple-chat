@@ -1,6 +1,7 @@
 import { FC, ReactNode, useCallback, useState } from "react";
 import { timeSince } from "./timeSince";
 import { ArrowIcon } from "./ArrowIcon";
+import { ChatIcon } from "./ChatIcon";
 
 export interface ChatMessage {
   id?: string | number;
@@ -11,6 +12,7 @@ export interface ChatMessage {
 export interface Chat {
   lastMessageText: string;
   lastMessageDate: Date;
+  name: string;
 }
 
 export interface ChatProps {
@@ -35,10 +37,12 @@ const ChatContainer: FC<{
   input: string;
   send: () => void;
   setInput: (input: string) => void;
-}> = ({ messages, setDrawerOpen, setInput, input, send }) => (
+  name: string;
+}> = ({ messages, setDrawerOpen, setInput, input, send, name }) => (
   <div className="chat-container">
     <div className="header-container" onClick={() => setDrawerOpen((v) => !v)}>
-      <span>&lt; Back</span>
+      <span className="back">&lt; Back</span>
+      <span className="name">{name}</span>
     </div>
     <div className="messages-container">
       {[...messages].reverse().map((message, idx) => (
@@ -55,13 +59,7 @@ const ChatContainer: FC<{
       />
       <div className="button-container">
         <div className="button" onClick={send}>
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            version="1.1"
-            viewBox="0 0 24 24"
-          >
-            <ArrowIcon />
-          </svg>
+          <ArrowIcon />
         </div>
       </div>
     </div>
@@ -77,8 +75,12 @@ const ChatRow: FC<{ chat: Chat; selected: boolean; onClick: () => void }> = ({
     className={`chat-row ${selected ? "chat-selected" : ""}`}
     onClick={onClick}
   >
-    <div className="date">{timeSince(chat.lastMessageDate)}</div>
-    <div className="truncate">{chat.lastMessageText}</div>
+    <ChatIcon />
+    <div className="row-right">
+      <div className="date">{timeSince(chat.lastMessageDate)}</div>
+      <div className="name">{chat.name}</div>
+      <div className="truncate">{chat.lastMessageText}</div>
+    </div>
   </div>
 );
 
@@ -144,6 +146,9 @@ export const ChatComponent: FC<ChatProps> = ({
         setInput={setInput}
         messages={messages}
         send={send}
+        name={
+          selectedChatIdx !== undefined ? chats[selectedChatIdx].name : "Chat"
+        }
         setDrawerOpen={setDrawerOpen}
       />
     </div>
