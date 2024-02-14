@@ -1,4 +1,4 @@
-import { FC, ReactNode, useState } from "react";
+import { FC, ReactNode, useCallback, useState } from "react";
 import { timeSince } from "./timeSince";
 
 export interface ChatMessage {
@@ -110,7 +110,7 @@ export const ChatComponent: FC<ChatProps> = ({
   setSelectedChatIdx,
 }: ChatProps) => {
   const [input, setInput] = useState("");
-  const [drawerOpen, setDrawerOpen] = useState(false);
+  const [drawerOpen_, setDrawerOpen] = useState(false);
   const send = () => {
     if (!input) return;
     onNewMessage?.(input);
@@ -120,8 +120,24 @@ export const ChatComponent: FC<ChatProps> = ({
     setSelectedChatIdx?.(idx);
     setDrawerOpen(false);
   };
+
+  const [width, setWidth] = useState(0);
+  const isWide = width > 600;
+  const drawerOpen = drawerOpen_ && !isWide;
+
+  const measuredRef = useCallback((node: HTMLDivElement) => {
+    if (!node) return;
+    const resizeObserver = new ResizeObserver(() => {
+      setWidth(node.getBoundingClientRect().width);
+    });
+    resizeObserver.observe(node);
+  }, []);
+
   return (
-    <div className={`drawer-container ${drawerOpen ? "drawer-open" : ""}`}>
+    <div
+      ref={measuredRef}
+      className={`drawer-container ${drawerOpen ? "drawer-open" : ""} ${isWide ? "drawer-wide" : ""}`}
+    >
       <Drawer
         chats={chats}
         selectedChatIdx={selectedChatIdx ?? -1}
