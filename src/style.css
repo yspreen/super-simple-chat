@@ -231,8 +231,9 @@ input {
 .drawer-wide {
   display: flex;
 }
-.drawer-wide .header-container {
-  display: none;
+.drawer-wide .header-container .back {
+  opacity: 0;
+  pointer-events: none;
 }
 .drawer-wide .drawer {
   position: initial;
