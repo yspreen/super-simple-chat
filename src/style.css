@@ -248,3 +248,9 @@ input {
   left: 0;
   flex: 2;
 }
+.date-row {
+  opacity: 0.5;
+  width: 100%;
+  text-align: center;
+  padding: 1em 0 0.5em;
+}

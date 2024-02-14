@@ -24,3 +24,14 @@ export const timeSince = (date: Date) => {
   }
   return "just now";
 };
+
+export const formatDay = (date: Date) => {
+  const formatter = new Intl.DateTimeFormat(navigator.language, {
+    month: "short",
+    weekday: "short",
+    day: "numeric",
+    hour: "numeric",
+    minute: "2-digit",
+  });
+  return formatter.format(date);
+};

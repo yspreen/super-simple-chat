@@ -1,5 +1,5 @@
 import { FC, ReactNode, useCallback, useState } from "react";
-import { timeSince } from "./timeSince";
+import { formatDay, timeSince } from "./timeSince";
 import { ArrowIcon } from "./ArrowIcon";
 import { ChatIcon } from "./ChatIcon";
 
@@ -7,6 +7,7 @@ export interface ChatMessage {
   id?: string | number;
   body: string | ReactNode;
   side: "left" | "right";
+  date?: Date;
 }
 
 export interface Chat {
@@ -23,12 +24,17 @@ export interface ChatProps {
   setSelectedChatIdx?: (idx: number) => void;
 }
 
-export const ChatBubble: FC<{ message: ChatMessage }> = ({
-  message: { body, side },
-}) => (
-  <div className={`chat-bubble bubble-${side}`}>
-    {typeof body === "string" ? <span>{body}</span> : body}
-  </div>
+export const ChatBubble: FC<{
+  message: ChatMessage & { showDate: boolean };
+}> = ({ message: { body, side, showDate, date } }) => (
+  <>
+    <div className={`chat-bubble bubble-${side}`}>
+      {typeof body === "string" ? <span>{body}</span> : body}
+    </div>
+    {showDate && (
+      <div className="date-row">{formatDay(date ?? new Date())}</div>
+    )}
+  </>
 );
 
 const ChatContainer: FC<{
@@ -38,33 +44,51 @@ const ChatContainer: FC<{
   send: () => void;
   setInput: (input: string) => void;
   name: string;
-}> = ({ messages, setDrawerOpen, setInput, input, send, name }) => (
-  <div className="chat-container">
-    <div className="header-container" onClick={() => setDrawerOpen((v) => !v)}>
-      <span className="back">&lt; Back</span>
-      <span className="name">{name}</span>
-    </div>
-    <div className="messages-container">
-      {[...messages].reverse().map((message, idx) => (
-        <ChatBubble message={message} key={message.id ?? idx} />
-      ))}
-    </div>
-    <div className="input-container">
-      <input
-        placeholder="Your Message &hellip;"
-        type="text"
-        onChange={(newVal) => setInput(newVal.target.value)}
-        value={input}
-        onKeyUp={(e) => e.key === "Enter" && send()}
-      />
-      <div className="button-container">
-        <div className="button" onClick={send}>
-          <ArrowIcon />
+}> = ({ messages, setDrawerOpen, setInput, input, send, name }) => {
+  let lastDate: Date | null = null;
+  return (
+    <div className="chat-container">
+      <div
+        className="header-container"
+        onClick={() => setDrawerOpen((v) => !v)}
+      >
+        <span className="back">&lt; Back</span>
+        <span className="name">{name}</span>
+      </div>
+      <div className="messages-container">
+        {[...messages]
+          .map((message) => {
+            const { date = new Date() } = message;
+            let showDate =
+              lastDate === null || date.getDay() !== lastDate.getDay();
+            lastDate = date;
+            return {
+              ...message,
+              showDate,
+            };
+          })
+          .reverse()
+          .map((message, idx) => (
+            <ChatBubble message={message} key={message.id ?? idx} />
+          ))}
+      </div>
+      <div className="input-container">
+        <input
+          placeholder="Your Message &hellip;"
+          type="text"
+          onChange={(newVal) => setInput(newVal.target.value)}
+          value={input}
+          onKeyUp={(e) => e.key === "Enter" && send()}
+        />
+        <div className="button-container">
+          <div className="button" onClick={send}>
+            <ArrowIcon />
+          </div>
         </div>
       </div>
     </div>
-  </div>
-);
+  );
+};
 
 const ChatRow: FC<{ chat: Chat; selected: boolean; onClick: () => void }> = ({
   chat,
