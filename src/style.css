@@ -94,7 +94,8 @@ input {
   overflow-y: auto; /* Allows scrolling */
 }
 .header-container {
-  height: 6em;
+  height: 3em;
+  flex-shrink: 0;
   padding: 0 1em;
   display: flex;
   align-items: center;
