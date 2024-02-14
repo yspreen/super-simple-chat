@@ -74,7 +74,7 @@ input {
 .drawer-container {
   position: relative;
   width: 50svw;
-  height: 400px;
+  height: 60svh;
   justify-content: flex-start;
   border: 1px solid var(--border);
   border-radius: 20px;
