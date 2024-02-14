@@ -5,7 +5,14 @@ export default function App() {
   const [messages, setMessages] = useState([] as ChatMessage[]);
   const [index, setIndex] = useState(0);
   useEffect(() => {
-    setMessages((messages) => [...messages, { body: "Hello", side: "left" }]);
+    setMessages((messages) => [
+      ...messages,
+      {
+        body: "Heeeello",
+        side: "left",
+        date: new Date(new Date().getTime() - 60 * 60 * 24 * 1000),
+      },
+    ]);
     setMessages((messages) => [...messages, { body: "Hey", side: "right" }]);
     setMessages((messages) => [...messages, { body: ".", side: "right" }]);
     setMessages((messages) => [...messages, { body: "Hello", side: "left" }]);
