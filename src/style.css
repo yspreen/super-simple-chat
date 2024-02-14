@@ -1,5 +1,6 @@
 :root {
   --bg: white;
+  --bars-bg: hsl(195, 100%, 98.5%);
   --chat-bg: rgb(250, 250, 250);
   --text: black;
   --border: #0001;
@@ -14,6 +15,7 @@
 @media (prefers-color-scheme: dark) {
   :root {
     --bg: black;
+    --bars-bg: hsl(195, 70.94%, 9.07%);
     --chat-bg: rgb(20, 20, 20);
     --text: white;
     --border: #fff3;
@@ -56,6 +58,7 @@ input {
   border: 1px solid var(--border);
   border-radius: 20px;
   background: var(--chat-bg);
+  overflow: hidden;
 }
 .messages-container {
   flex-grow: 1;
@@ -64,6 +67,22 @@ input {
   width: 100%;
   flex-direction: column-reverse;
   overflow-y: auto; /* Allows scrolling */
+}
+.header-container {
+  height: 8em;
+  padding: 1em;
+  display: flex;
+  align-items: center;
+  border: 0 solid var(--border);
+  border-bottom-width: 1px;
+  font-weight: 500;
+  cursor: pointer;
+  color: var(--text);
+}
+
+.header-container,
+.input-container {
+  background-color: var(--bars-bg);
 }
 .input-container {
   display: flex;

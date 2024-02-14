@@ -28,6 +28,9 @@ export const Chat: FC<ChatProps> = ({ messages, onNewMessage }: ChatProps) => {
   };
   return (
     <div className="chat-container">
+      <div className="header-container">
+        <span>&lt; Back</span>
+      </div>
       <div className="messages-container">
         {[...messages].reverse().map((message, idx) => (
           <ChatBubble message={message} key={message.id ?? idx} />
@@ -35,7 +38,7 @@ export const Chat: FC<ChatProps> = ({ messages, onNewMessage }: ChatProps) => {
       </div>
       <div className="input-container">
         <input
-          placeholder="Your Message ..."
+          placeholder="Your Message &hellip;"
           type="text"
           onChange={(newVal) => setInput(newVal.target.value)}
           value={input}
