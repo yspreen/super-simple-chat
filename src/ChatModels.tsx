@@ -8,6 +8,7 @@ export interface ChatMessage {
 }
 
 export interface Chat {
+  id?: string | number;
   lastMessageText: string;
   lastMessageDate: Date;
   name: string;
@@ -19,4 +20,5 @@ export interface ChatProps {
   selectedChatIdx?: number;
   onNewMessage?: (text: string) => void;
   setSelectedChatIdx?: (idx: number) => void;
+  doSearch?: (val: string) => void;
 }

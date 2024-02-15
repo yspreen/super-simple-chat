@@ -9,6 +9,7 @@ export const ChatComponent: FC<ChatProps> = ({
   chats,
   selectedChatIdx,
   setSelectedChatIdx,
+  doSearch,
 }: ChatProps) => {
   const [input, setInput] = useState("");
   const [drawerOpen_, setDrawerOpen] = useState(false);
@@ -43,6 +44,7 @@ export const ChatComponent: FC<ChatProps> = ({
         chats={chats}
         selectedChatIdx={selectedChatIdx ?? -1}
         selectIndex={setIndex}
+        doSearch={doSearch}
       />
       <ChatContainer
         input={input}

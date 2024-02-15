@@ -93,6 +93,16 @@ input {
   flex-direction: column-reverse;
   overflow-y: auto; /* Allows scrolling */
 }
+.search-container {
+  height: 3em;
+  flex-shrink: 0;
+  padding: 0 1em;
+  display: flex;
+  align-items: center;
+}
+.search-container input {
+  font-size: 1em;
+}
 .header-container {
   height: 3em;
   flex-shrink: 0;

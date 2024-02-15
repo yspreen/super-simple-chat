@@ -58,6 +58,7 @@ export default function App() {
       onNewMessage={newMessage}
       selectedChatIdx={index}
       setSelectedChatIdx={setIndex}
+      doSearch={(val) => console.log("search:", val)}
     />
   );
 }
