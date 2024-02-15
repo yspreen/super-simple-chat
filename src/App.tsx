@@ -1,5 +1,6 @@
-import { useEffect, useRef, useState } from "react";
-import { Chat, ChatComponent, ChatMessage } from "./Chat";
+import { useEffect, useState } from "react";
+import { ChatComponent } from "./ChatComponent";
+import { Chat, ChatMessage } from "./ChatModels";
 
 export default function App() {
   const [messages, setMessages] = useState([] as ChatMessage[]);
