@@ -49,3 +49,12 @@ The code provided is a React component named `App` that serves as the main compo
 
 ### Conclusion
 The `App` component manages chat messages and chat data, populates initial messages, and provides functionality to add new messages and interact with the chat interface through the `ChatComponent` subcomponent. The component structure allows for displaying chat messages and managing chat interactions effectively. The detailed explanation of the data objects `Chat`, `chats`, `ChatMessage`, and `Messages` provides insight into the structure and content of the chat data handled by the component.
+
+![image](https://github.com/LaymanTeam/yspreen-super-simple-chat/assets/129208121/d068d048-1284-45c1-a7e9-39f350587ede)
+
+##Todos 
+- Add Display_name to top of each series of Chatmessages
+- Add Call-backs to Message Button Submit, so that a function can be placed there
+- Create "slots" component on message input component for additional button components as necessary, e.g., attachment, AI
+- Does ChatComponent support cleaning of HTML and autolinking - if not Interweave does.
+- Return Chatmessage content as param for further use
