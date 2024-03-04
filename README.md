@@ -52,7 +52,7 @@ The `App` component manages chat messages and chat data, populates initial messa
 
 ![image](https://github.com/LaymanTeam/yspreen-super-simple-chat/assets/129208121/d068d048-1284-45c1-a7e9-39f350587ede)
 
-##Todos 
+## Todos 
 - Add Display_name to top of each series of Chatmessages
 - Add Call-backs to Message Button Submit, so that a function can be placed there
 - Create "slots" component on message input component for additional button components as necessary, e.g., attachment, AI
