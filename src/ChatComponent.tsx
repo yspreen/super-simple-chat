@@ -2,6 +2,7 @@ import { FC, useCallback, useState } from "react";
 import { ChatProps } from "./ChatModels";
 import { ChatDrawer } from "./ChatDrawer";
 import { ChatContainer } from "./ChatContainer";
+import "./style.css";
 
 export const ChatComponent: FC<ChatProps> = ({
   messages,
@@ -38,7 +39,9 @@ export const ChatComponent: FC<ChatProps> = ({
   return (
     <div
       ref={measuredRef}
-      className={`drawer-container ${drawerOpen ? "drawer-open" : ""} ${isWide ? "drawer-wide" : ""}`}
+      className={`drawer-container ${drawerOpen ? "drawer-open" : ""} ${
+        isWide ? "drawer-wide" : ""
+      }`}
     >
       <ChatDrawer
         chats={chats}
