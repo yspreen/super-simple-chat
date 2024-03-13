@@ -99,6 +99,8 @@ input {
   padding: 0 1em;
   display: flex;
   align-items: center;
+  border: 0 solid var(--border);
+  border-bottom-width: 1px;
 }
 .search-container input {
   font-size: 1em;
