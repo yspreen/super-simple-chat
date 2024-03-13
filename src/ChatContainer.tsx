@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, KeyboardEvent } from "react";
 import { ChatMessage } from "./ChatModels";
 import { ArrowIcon } from "./ArrowIcon";
 import { ChatBubble } from "./ChatBubble";
@@ -25,6 +25,18 @@ export const ChatContainer: FC<{
   showNamesRightSide = false,
 }) => {
   let lastMessage: ChatMessage | null = null;
+  const keyDown = (e: KeyboardEvent<HTMLTextAreaElement>) => {
+    if (e.key !== "Enter") return;
+
+    // For macOS, check if the Meta (Command) key is pressed
+    // For Windows, check if the Ctrl key is pressed
+    if (
+      (navigator.userAgent.includes("Mac") && e.metaKey) ||
+      (!navigator.userAgent.includes("Mac") && e.ctrlKey)
+    ) {
+      send();
+    }
+  };
   return (
     <div className="chat-container">
       <div
@@ -68,12 +80,11 @@ export const ChatContainer: FC<{
           ))}
       </div>
       <div className="input-container">
-        <input
+        <textarea
           placeholder="Your Message &hellip;"
-          type="text"
           onChange={(newVal) => setInput(newVal.target.value)}
           value={input}
-          onKeyUp={(e) => e.key === "Enter" && send()}
+          onKeyDown={keyDown}
         />
         <div className="button-container">
           <div className="button" onClick={send}>

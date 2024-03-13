@@ -90,7 +90,7 @@ export default function App() {
   }, []);
   const chats: Chat[] = [
     {
-      name: "John Doe",
+      name: "Chat With Alice",
       lastMessageDate: new Date(),
       lastMessageText:
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cill",
@@ -100,7 +100,7 @@ export default function App() {
       },
     },
     {
-      name: "John Doe",
+      name: "Chat With Alice",
       lastMessageDate: new Date(new Date().getTime() - 65 * 1000),
       lastMessageText:
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cill",
@@ -110,7 +110,7 @@ export default function App() {
       },
     },
     {
-      name: "John Doe",
+      name: "Chat With Alice",
       lastMessageDate: new Date(new Date().getTime() - 65 * 60 * 1000),
       lastMessageText:
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cill",
@@ -120,7 +120,7 @@ export default function App() {
       },
     },
     {
-      name: "John Doe",
+      name: "Chat With Alice",
       lastMessageDate: new Date(new Date().getTime() - 25 * 60 * 60 * 1000),
       lastMessageText:
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cill",
