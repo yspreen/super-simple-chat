@@ -132,6 +132,8 @@
   color: var(--text);
   resize: none;
   line-height: 1.3;
+  max-height: 20svh;
+  overflow-y: auto;
 }
 .input-container .button path {
   fill: var(--bubble-right-text);
