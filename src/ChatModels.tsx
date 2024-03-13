@@ -5,6 +5,7 @@ export interface ChatMessage {
   body: string | ReactNode;
   side: "left" | "right";
   date?: Date;
+  authorId: string;
 }
 
 export interface Chat {
@@ -12,6 +13,7 @@ export interface Chat {
   lastMessageText: string;
   lastMessageDate: Date;
   name: string;
+  authorNames: Record<string, string>;
 }
 
 export interface ChatProps {
