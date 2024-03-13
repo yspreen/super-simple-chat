@@ -11,7 +11,7 @@ export const ChatContainer: FC<{
   setInput: (input: string) => void;
   name: string;
 }> = ({ messages, setDrawerOpen, setInput, input, send, name }) => {
-  let lastDate: Date | null = null;
+  let lastMessage: ChatMessage | null = null;
   return (
     <div className="chat-container">
       <div
@@ -26,11 +26,17 @@ export const ChatContainer: FC<{
           .map((message) => {
             const { date = new Date() } = message;
             let showDate =
-              lastDate === null || date.getDay() !== lastDate.getDay();
-            lastDate = date;
+              lastMessage === null ||
+              date.getDay() !== (lastMessage.date ?? new Date()).getDay();
+            const topGap =
+              !showDate &&
+              !!lastMessage &&
+              lastMessage.authorId !== message.authorId;
+            lastMessage = message;
             return {
               ...message,
               showDate,
+              topGap,
             };
           })
           .reverse()

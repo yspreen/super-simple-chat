@@ -3,10 +3,10 @@ import { ChatMessage } from "./ChatModels";
 import { formatDay } from "./timeSince";
 
 export const ChatBubble: FC<{
-  message: ChatMessage & { showDate: boolean };
-}> = ({ message: { body, side, showDate, date } }) => (
+  message: ChatMessage & { showDate: boolean; topGap: boolean };
+}> = ({ message: { body, side, showDate, date, topGap } }) => (
   <>
-    <div className={`chat-bubble bubble-${side}`}>
+    <div className={`chat-bubble bubble-${side} ${topGap ? "top-gap" : ""}`}>
       {typeof body === "string" ? <span>{body}</span> : body}
     </div>
     {showDate && (

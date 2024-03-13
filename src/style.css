@@ -163,6 +163,9 @@
   min-width: 50px;
   overflow-wrap: break-word;
 }
+.chat-bubble.top-gap {
+  margin-top: 1em;
+}
 .chat-bubble.bubble-right {
   background-color: var(--bubble-right);
   border: 1px solid var(--bubble-right-border);
