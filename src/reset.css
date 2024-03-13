@@ -123,6 +123,7 @@ table {
   border-collapse: collapse;
   border-spacing: 0;
 }
+textarea,
 input {
   border: none;
   background-image: none;

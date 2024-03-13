@@ -124,12 +124,14 @@
   border: 0 solid var(--border);
   border-top-width: 1px;
 }
-.input-container input {
+.input-container textarea {
   padding: 1em;
   font-size: 1em;
   flex-grow: 1;
   padding-right: 0.1em;
   color: var(--text);
+  resize: none;
+  line-height: 1.3;
 }
 .input-container .button path {
   fill: var(--bubble-right-text);

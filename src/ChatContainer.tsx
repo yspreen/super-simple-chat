@@ -1,4 +1,4 @@
-import { FC, KeyboardEvent } from "react";
+import { FC, KeyboardEvent, ChangeEvent, useRef } from "react";
 import { ChatMessage } from "./ChatModels";
 import { ArrowIcon } from "./ArrowIcon";
 import { ChatBubble } from "./ChatBubble";
@@ -25,6 +25,7 @@ export const ChatContainer: FC<{
   showNamesRightSide = false,
 }) => {
   let lastMessage: ChatMessage | null = null;
+  const area = useRef(null as HTMLTextAreaElement | null);
   const keyDown = (e: KeyboardEvent<HTMLTextAreaElement>) => {
     if (e.key !== "Enter") return;
 
@@ -36,6 +37,13 @@ export const ChatContainer: FC<{
     ) {
       send();
     }
+  };
+  const onChange = (newVal: ChangeEvent<HTMLTextAreaElement>) => {
+    setInput(newVal.target.value);
+    const element = area.current;
+    if (!element) return;
+    element.style.height = "auto";
+    element.style.height = `${element.scrollHeight}px`;
   };
   return (
     <div className="chat-container">
@@ -81,8 +89,9 @@ export const ChatContainer: FC<{
       </div>
       <div className="input-container">
         <textarea
+          ref={area}
           placeholder="Your Message &hellip;"
-          onChange={(newVal) => setInput(newVal.target.value)}
+          onChange={onChange}
           value={input}
           onKeyDown={keyDown}
         />
