@@ -166,6 +166,15 @@
 .chat-bubble.top-gap {
   margin-top: 1em;
 }
+.chat-name {
+  padding: 1em 1.1em 0.3em;
+  opacity: 0.5;
+  text-align: left;
+  width: 100%;
+}
+.chat-name.bubble-right {
+  text-align: right;
+}
 .chat-bubble.bubble-right {
   background-color: var(--bubble-right);
   border: 1px solid var(--bubble-right-border);

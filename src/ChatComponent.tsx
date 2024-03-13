@@ -11,6 +11,8 @@ export const ChatComponent: FC<ChatProps> = ({
   selectedChatIdx,
   setSelectedChatIdx,
   doSearch,
+  showNamesLeftSide,
+  showNamesRightSide,
 }: ChatProps) => {
   const [input, setInput] = useState("");
   const [drawerOpen_, setDrawerOpen] = useState(false);
@@ -50,14 +52,19 @@ export const ChatComponent: FC<ChatProps> = ({
         doSearch={doSearch}
       />
       <ChatContainer
-        input={input}
-        setInput={setInput}
-        messages={messages}
-        send={send}
         name={
           selectedChatIdx !== undefined ? chats[selectedChatIdx].name : "Chat"
         }
-        setDrawerOpen={setDrawerOpen}
+        authors={chats[selectedChatIdx ?? 0].authorNames}
+        {...{
+          input,
+          setInput,
+          messages,
+          send,
+          setDrawerOpen,
+          showNamesLeftSide,
+          showNamesRightSide,
+        }}
       />
     </div>
   );

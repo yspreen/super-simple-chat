@@ -10,7 +10,20 @@ export const ChatContainer: FC<{
   send: () => void;
   setInput: (input: string) => void;
   name: string;
-}> = ({ messages, setDrawerOpen, setInput, input, send, name }) => {
+  showNamesLeftSide?: boolean;
+  showNamesRightSide?: boolean;
+  authors: Record<string, string>;
+}> = ({
+  messages,
+  setDrawerOpen,
+  setInput,
+  input,
+  send,
+  name,
+  authors,
+  showNamesLeftSide = true,
+  showNamesRightSide = false,
+}) => {
   let lastMessage: ChatMessage | null = null;
   return (
     <div className="chat-container">
@@ -24,19 +37,29 @@ export const ChatContainer: FC<{
       <div className="messages-container">
         {[...messages]
           .map((message) => {
-            const { date = new Date() } = message;
+            const { date = new Date(), authorId } = message;
             let showDate =
               lastMessage === null ||
               date.getDay() !== (lastMessage.date ?? new Date()).getDay();
-            const topGap =
-              !showDate &&
-              !!lastMessage &&
-              lastMessage.authorId !== message.authorId;
+            const newAuthor = lastMessage?.authorId !== authorId;
+            let topGap = !showDate && !!lastMessage && newAuthor;
+            let showName = newAuthor;
+            if (message.side === "left" && !showNamesLeftSide) {
+              showName = false;
+            }
+            if (message.side === "right" && !showNamesRightSide) {
+              showName = false;
+            }
+            if (showName) {
+              topGap = false;
+            }
             lastMessage = message;
             return {
               ...message,
               showDate,
               topGap,
+              showName,
+              name: authors[authorId],
             };
           })
           .reverse()

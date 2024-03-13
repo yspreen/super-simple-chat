@@ -23,4 +23,6 @@ export interface ChatProps {
   onNewMessage?: (text: string) => void;
   setSelectedChatIdx?: (idx: number) => void;
   doSearch?: (val: string) => void;
+  showNamesLeftSide?: boolean;
+  showNamesRightSide?: boolean;
 }
