@@ -189,17 +189,11 @@ input {
 }
 .chat-row {
   padding: 1em 1%;
-  padding-left: 0;
+  padding-left: 1em;
   border: 0 solid var(--border);
   border-bottom-width: 1px;
   cursor: pointer;
   display: flex;
-}
-.chat-row svg {
-  width: 5em;
-  padding: 0 1em;
-  opacity: 0.2;
-  flex-shrink: 0;
 }
 .chat-row path {
   fill: var(--text);

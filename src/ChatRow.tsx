@@ -1,7 +1,6 @@
 import { FC } from "react";
 import { Chat } from "./ChatModels";
 import { timeSince } from "./timeSince";
-import { ChatIcon } from "./ChatIcon";
 
 export const ChatRow: FC<{
   chat: Chat;
@@ -12,7 +11,7 @@ export const ChatRow: FC<{
     className={`chat-row ${selected ? "chat-selected" : ""}`}
     onClick={onClick}
   >
-    <ChatIcon />
+    {/* <!-- TODO: badge --> */}
     <div className="row-right">
       <div className="date">{timeSince(chat.lastMessageDate)}</div>
       <div className="name">{chat.name}</div>
