@@ -1,6 +1,7 @@
-import { useEffect, useState } from "react";
+import { CSSProperties, useEffect, useState } from "react";
 import { ChatComponent } from "./ChatComponent";
 import { Chat, ChatMessage } from "./ChatModels";
+import AttachFileIcon from "@mui/icons-material/AttachFile";
 
 export default function App() {
   const [messages, setMessages] = useState([] as ChatMessage[]);
@@ -135,14 +136,28 @@ export default function App() {
       ...messages,
       { body: text, side: "right", authorId: "b" },
     ]);
+  const widget = (
+    <AttachFileIcon style={$widget} onClick={() => console.log("attach")} />
+  );
   return (
     <ChatComponent
       chats={chats}
       messages={messages}
-      onNewMessage={newMessage}
+      onInputSubmit={newMessage}
       selectedChatIdx={index}
-      setSelectedChatIdx={setIndex}
-      doSearch={(val) => console.log("search:", val)}
+      onSelectedIndexChange={setIndex}
+      onDoSearch={(val) => console.log("search:", val)}
+      inputWidgets={widget}
     />
   );
 }
+
+const $widget: CSSProperties = {
+  width: 28,
+  height: 28,
+  margin: "0.6em",
+  marginRight: 0,
+  opacity: 0.6,
+  fill: "var(--text)",
+  cursor: "pointer",
+};

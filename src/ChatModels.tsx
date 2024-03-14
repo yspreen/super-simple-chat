@@ -20,9 +20,10 @@ export interface ChatProps {
   messages: ChatMessage[];
   chats: Chat[];
   selectedChatIdx?: number;
-  onNewMessage?: (text: string) => void;
-  setSelectedChatIdx?: (idx: number) => void;
-  doSearch?: (val: string) => void;
+  onInputSubmit?: (text: string) => void;
+  onSelectedIndexChange?: (idx: number) => void;
+  onDoSearch?: (val: string) => void;
   showNamesLeftSide?: boolean;
   showNamesRightSide?: boolean;
+  inputWidgets?: ReactNode;
 }

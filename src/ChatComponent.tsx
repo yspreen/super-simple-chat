@@ -6,13 +6,14 @@ import "./style.css";
 
 export const ChatComponent: FC<ChatProps> = ({
   messages,
-  onNewMessage,
+  onInputSubmit: onNewMessage,
   chats,
   selectedChatIdx,
-  setSelectedChatIdx,
-  doSearch,
+  onSelectedIndexChange: setSelectedChatIdx,
+  onDoSearch: doSearch,
   showNamesLeftSide,
   showNamesRightSide,
+  inputWidgets,
 }: ChatProps) => {
   const [input, setInput] = useState("");
   const [drawerOpen_, setDrawerOpen] = useState(false);
@@ -64,6 +65,7 @@ export const ChatComponent: FC<ChatProps> = ({
           setDrawerOpen,
           showNamesLeftSide,
           showNamesRightSide,
+          inputWidgets,
         }}
       />
     </div>

@@ -1,4 +1,4 @@
-import { FC, KeyboardEvent, ChangeEvent, useRef } from "react";
+import { FC, KeyboardEvent, ChangeEvent, useRef, ReactNode } from "react";
 import { ChatMessage } from "./ChatModels";
 import ArrowOutwardIcon from "@mui/icons-material/ArrowOutward";
 import { ChatBubble } from "./ChatBubble";
@@ -13,6 +13,7 @@ export const ChatContainer: FC<{
   showNamesLeftSide?: boolean;
   showNamesRightSide?: boolean;
   authors: Record<string, string>;
+  inputWidgets?: ReactNode;
 }> = ({
   messages,
   setDrawerOpen,
@@ -23,6 +24,7 @@ export const ChatContainer: FC<{
   authors,
   showNamesLeftSide = true,
   showNamesRightSide = false,
+  inputWidgets,
 }) => {
   let lastMessage: ChatMessage | null = null;
   const area = useRef(null as HTMLTextAreaElement | null);
@@ -90,6 +92,7 @@ export const ChatContainer: FC<{
           ))}
       </div>
       <div className="input-container">
+        {inputWidgets}
         <textarea
           ref={area}
           placeholder="Your Message &hellip;"
