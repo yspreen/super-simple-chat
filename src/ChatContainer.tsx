@@ -1,6 +1,6 @@
-import { FC, KeyboardEvent, ChangeEvent, useRef, useEffect } from "react";
+import { FC, KeyboardEvent, ChangeEvent, useRef } from "react";
 import { ChatMessage } from "./ChatModels";
-import { ArrowIcon } from "./ArrowIcon";
+import ArrowOutwardIcon from "@mui/icons-material/ArrowOutward";
 import { ChatBubble } from "./ChatBubble";
 
 export const ChatContainer: FC<{
@@ -100,7 +100,7 @@ export const ChatContainer: FC<{
         />
         <div className="button-container">
           <div className="button" onClick={send}>
-            <ArrowIcon />
+            <ArrowOutwardIcon />
           </div>
         </div>
       </div>
