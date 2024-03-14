@@ -1,4 +1,4 @@
-import { FC, KeyboardEvent, ChangeEvent, useRef } from "react";
+import { FC, KeyboardEvent, ChangeEvent, useRef, useEffect } from "react";
 import { ChatMessage } from "./ChatModels";
 import { ArrowIcon } from "./ArrowIcon";
 import { ChatBubble } from "./ChatBubble";
@@ -38,12 +38,14 @@ export const ChatContainer: FC<{
       send();
     }
   };
-  const onChange = (newVal: ChangeEvent<HTMLTextAreaElement>) => {
-    setInput(newVal.target.value);
-    const element = area.current;
+  const setHeight = (element: HTMLTextAreaElement | null) => {
     if (!element) return;
     element.style.height = "auto";
     element.style.height = `${element.scrollHeight}px`;
+  };
+  const onChange = (newVal: ChangeEvent<HTMLTextAreaElement>) => {
+    setInput(newVal.target.value);
+    setHeight(area.current);
   };
   return (
     <div className="chat-container">
@@ -94,6 +96,7 @@ export const ChatContainer: FC<{
           onChange={onChange}
           value={input}
           onKeyDown={keyDown}
+          rows={1}
         />
         <div className="button-container">
           <div className="button" onClick={send}>
