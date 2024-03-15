@@ -1,6 +1,7 @@
 import { FC } from "react";
 import { ChatMessage } from "./ChatModels";
 import { formatDay } from "./timeSince";
+import { Interweave, MatcherInterface } from "interweave";
 
 export const ChatBubble: FC<{
   message: ChatMessage & {
@@ -9,10 +10,18 @@ export const ChatBubble: FC<{
     name: string;
     showName: boolean;
   };
-}> = ({ message: { body, side, showDate, date, topGap, showName, name } }) => (
+  matchers?: MatcherInterface<any>[];
+}> = ({
+  message: { body, side, showDate, date, topGap, showName, name },
+  matchers,
+}) => (
   <>
     <div className={`chat-bubble bubble-${side} ${topGap ? "top-gap" : ""}`}>
-      {typeof body === "string" ? <span>{body}</span> : body}
+      {typeof body === "string" ? (
+        <Interweave content={body} matchers={matchers} />
+      ) : (
+        body
+      )}
     </div>
     {showName && (
       <div className={`chat-name bubble-${side} ${topGap ? "top-gap" : ""}`}>

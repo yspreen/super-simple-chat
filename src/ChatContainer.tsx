@@ -10,6 +10,7 @@ import { ChatMessage } from "./ChatModels";
 import ArrowOutwardIcon from "@mui/icons-material/ArrowOutward";
 import { ChatBubble } from "./ChatBubble";
 import { ArrowBack } from "@mui/icons-material";
+import { MatcherInterface } from "interweave";
 
 export const ChatContainer: FC<{
   messages: ChatMessage[];
@@ -22,6 +23,7 @@ export const ChatContainer: FC<{
   showNamesRightSide?: boolean;
   authors: Record<string, string>;
   inputWidgets?: ReactNode;
+  matchers?: MatcherInterface<any>[];
 }> = ({
   messages,
   setDrawerOpen,
@@ -33,6 +35,7 @@ export const ChatContainer: FC<{
   showNamesLeftSide = true,
   showNamesRightSide = false,
   inputWidgets,
+  matchers,
 }) => {
   let lastMessage: ChatMessage | null = null;
   const area = useRef(null as HTMLTextAreaElement | null);
@@ -98,7 +101,7 @@ export const ChatContainer: FC<{
           })
           .reverse()
           .map((message, idx) => (
-            <ChatBubble message={message} key={message.id ?? idx} />
+            <ChatBubble key={message.id ?? idx} {...{ matchers, message }} />
           ))}
       </div>
       <div className="input-container">

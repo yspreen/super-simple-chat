@@ -2,8 +2,9 @@ import { CSSProperties, useEffect, useState } from "react";
 import { ChatComponent } from "./ChatComponent";
 import { Chat, ChatMessage } from "./ChatModels";
 import AttachFileIcon from "@mui/icons-material/AttachFile";
+import { UrlMatcher } from "interweave-autolink";
 
-export default function App() {
+export default function Demo() {
   const [messages, setMessages] = useState([] as ChatMessage[]);
   const [index, setIndex] = useState(0);
   useEffect(() => {
@@ -148,6 +149,7 @@ export default function App() {
       onSelectedIndexChange={setIndex}
       onDoSearch={(val) => console.log("search:", val)}
       inputWidgets={widget}
+      matchers={[new UrlMatcher("url")]}
     />
   );
 }

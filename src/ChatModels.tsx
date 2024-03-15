@@ -1,3 +1,4 @@
+import { MatcherInterface } from "interweave";
 import { ReactNode } from "react";
 
 export interface ChatMessage {
@@ -26,4 +27,5 @@ export interface ChatProps {
   showNamesLeftSide?: boolean;
   showNamesRightSide?: boolean;
   inputWidgets?: ReactNode;
+  matchers?: MatcherInterface<any>[];
 }

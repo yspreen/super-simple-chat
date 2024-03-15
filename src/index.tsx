@@ -1,6 +1,6 @@
 import { StrictMode } from "react";
 import * as ReactDOMClient from "react-dom/client";
-import App from "./App";
+import Demo from "./Demo";
 import "./reset.css";
 import "./demo.css";
 
@@ -9,6 +9,6 @@ const root = ReactDOMClient.createRoot(rootElement!);
 
 root.render(
   <StrictMode>
-    <App />
+    <Demo />
   </StrictMode>
 );

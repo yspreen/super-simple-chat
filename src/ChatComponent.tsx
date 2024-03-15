@@ -5,15 +5,12 @@ import { ChatContainer } from "./ChatContainer";
 import "./style.css";
 
 export const ChatComponent: FC<ChatProps> = ({
-  messages,
   onInputSubmit: onNewMessage,
   chats,
   selectedChatIdx,
   onSelectedIndexChange: setSelectedChatIdx,
   onDoSearch: doSearch,
-  showNamesLeftSide,
-  showNamesRightSide,
-  inputWidgets,
+  ...rest
 }: ChatProps) => {
   const [input, setInput] = useState("");
   const [drawerOpen_, setDrawerOpen] = useState(false);
@@ -47,10 +44,9 @@ export const ChatComponent: FC<ChatProps> = ({
       }`}
     >
       <ChatDrawer
-        chats={chats}
         selectedChatIdx={selectedChatIdx ?? -1}
         selectIndex={setIndex}
-        doSearch={doSearch}
+        {...{ doSearch, chats }}
       />
       <ChatContainer
         name={
@@ -60,12 +56,9 @@ export const ChatComponent: FC<ChatProps> = ({
         {...{
           input,
           setInput,
-          messages,
           send,
           setDrawerOpen,
-          showNamesLeftSide,
-          showNamesRightSide,
-          inputWidgets,
+          ...rest,
         }}
       />
     </div>
