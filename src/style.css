@@ -101,10 +101,14 @@
   color: var(--text);
 }
 .header-container::after {
-  content: "< back";
+  /* This is a placeholder to make sure the title is centered. */
+  content: "< invisible placeholder >";
   opacity: 0;
   flex-shrink: 100;
-  max-width: 15%;
+  pointer-events: none;
+  max-width: 24px;
+  max-height: 1px;
+  overflow: hidden;
 }
 .header-container .name {
   flex-grow: 1;

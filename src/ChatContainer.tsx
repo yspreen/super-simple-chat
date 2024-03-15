@@ -2,6 +2,7 @@ import { FC, KeyboardEvent, ChangeEvent, useRef, ReactNode } from "react";
 import { ChatMessage } from "./ChatModels";
 import ArrowOutwardIcon from "@mui/icons-material/ArrowOutward";
 import { ChatBubble } from "./ChatBubble";
+import { ArrowBack } from "@mui/icons-material";
 
 export const ChatContainer: FC<{
   messages: ChatMessage[];
@@ -55,7 +56,9 @@ export const ChatContainer: FC<{
         className="header-container"
         onClick={() => setDrawerOpen((v) => !v)}
       >
-        <span className="back">&lt; Back</span>
+        <span className="back">
+          <ArrowBack />
+        </span>
         <span className="name">{name}</span>
       </div>
       <div className="messages-container">
