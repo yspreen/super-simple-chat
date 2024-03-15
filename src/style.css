@@ -179,6 +179,9 @@
 .chat-bubble.top-gap {
   margin-top: 1em;
 }
+.chat-bubble a {
+  color: inherit;
+}
 .chat-name {
   padding: 1em 1.1em 0.3em;
   opacity: 0.5;
