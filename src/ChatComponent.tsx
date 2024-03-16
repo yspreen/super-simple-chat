@@ -40,7 +40,7 @@ export const ChatComponent: FC<ChatProps> = ({
   return (
     <div
       ref={measuredRef}
-      className={`drawer-container ${drawerOpen ? "drawer-open" : ""} ${
+      className={`spreen-chat-component ${drawerOpen ? "drawer-open" : ""} ${
         darkMode ? "dark" : ""
       } ${isWide ? "drawer-wide" : ""}`}
     >
