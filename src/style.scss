@@ -3,6 +3,7 @@
   --bars-bg: hsl(195, 100%, 98.5%);
   --chat-bg: rgb(250, 250, 250);
   --text: black;
+  --scroll: rgba(0, 0, 0, 0.15);
   --border: #0001;
   --bubble-left: hsl(195, 89.43%, 95.27%);
   --bubble-left-border: var(--border);
@@ -12,30 +13,12 @@
   --bubble-right-text: #f0f6f9;
   --alert: hsl(0, 77%, 66%);
 
-  background-color: var(--bg);
-  color: var(--text);
-
-  input {
-    color: var(--text);
-  }
-
-  *::-webkit-scrollbar {
-    width: 4px;
-    background-color: transparent; /* Remove scrollbar background */
-  }
-  *::-webkit-scrollbar-thumb {
-    background-color: lightsteelblue; /* Set scrollbar thumb color to lightgray */
-  }
-  * {
-    scrollbar-width: thin; /* Set scrollbar width for Firefox */
-    scrollbar-color: lightsteelblue transparent;
-  }
-
   &.dark {
     --bg: black;
     --bars-bg: hsl(195, 70.94%, 9.07%);
     --chat-bg: rgb(20, 20, 20);
     --text: white;
+    --scroll: rgba(255, 255, 255, 0.2);
     --border: #fff3;
     --bubble-left: hsl(195, 0%, 15%);
     --bubble-left-border: var(--border);
@@ -53,6 +36,26 @@
   border: 1px solid var(--border);
   border-radius: 8px;
   overflow: hidden;
+  background-color: var(--bg);
+  color: var(--text);
+
+  input {
+    color: var(--text);
+  }
+
+  *::-webkit-scrollbar {
+    width: 4px;
+    background-color: transparent; /* Remove scrollbar background */
+  }
+  *::-webkit-scrollbar-thumb {
+    background-color: var(
+      --scroll
+    ); /* Set scrollbar thumb color to lightgray */
+  }
+  * {
+    scrollbar-width: thin; /* Set scrollbar width for Firefox */
+    scrollbar-color: var(--scroll) transparent;
+  }
 
   &,
   & * {
@@ -100,9 +103,9 @@
     align-items: center;
     border: 0 solid var(--border);
     border-bottom-width: 1px;
-  }
-  .search-container input {
-    font-size: 1em;
+    input {
+      font-size: 1em;
+    }
   }
   .header-container {
     height: 3em;
@@ -116,24 +119,25 @@
     font-weight: 500;
     cursor: pointer;
     color: var(--text);
-  }
-  .header-container::after {
-    /* This is a placeholder to make sure the title is centered. */
-    content: "< invisible placeholder >";
-    opacity: 0;
-    flex-shrink: 100;
-    pointer-events: none;
-    max-width: 24px;
-    max-height: 1px;
-    overflow: hidden;
-  }
-  .header-container .name {
-    flex-grow: 1;
-    flex-shrink: 1;
-    text-align: center;
-  }
-  .header-container .back {
-    flex-shrink: 0;
+
+    &::after {
+      /* This is a placeholder to make sure the title is centered. */
+      content: "< invisible placeholder >";
+      opacity: 0;
+      flex-shrink: 100;
+      pointer-events: none;
+      max-width: 24px;
+      max-height: 1px;
+      overflow: hidden;
+    }
+    .name {
+      flex-grow: 1;
+      flex-shrink: 1;
+      text-align: center;
+    }
+    .back {
+      flex-shrink: 0;
+    }
   }
   .header-container,
   .input-container {
@@ -145,40 +149,41 @@
     width: 100%;
     border: 0 solid var(--border);
     border-top-width: 1px;
-  }
-  .input-container textarea {
-    padding: 1.1em 1em;
-    font-size: 1em;
-    flex-grow: 1;
-    padding-right: 0.1em;
-    color: var(--text);
-    resize: none;
-    line-height: 1.3;
-    max-height: 20svh;
-    overflow-y: auto;
-  }
-  .input-container .button path {
-    fill: var(--bubble-right-text);
-    opacity: 0.8;
-  }
-  .input-container .button-container {
-    height: 3.5em;
-    aspect-ratio: 1;
-    padding: 0.4em;
-    flex-shrink: 0;
-  }
-  .input-container .button {
-    height: 100%;
-    aspect-ratio: 1;
-    border: none;
-    background: var(--bubble-right);
-    border: 1px solid var(--bubble-right-border);
-    border-radius: 100%;
-    padding: 0.5em;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+
+    textarea {
+      padding: 1.1em 1em;
+      font-size: 1em;
+      flex-grow: 1;
+      padding-right: 0.1em;
+      color: var(--text);
+      resize: none;
+      line-height: 1.3;
+      max-height: 20svh;
+      overflow-y: auto;
+    }
+    .button path {
+      fill: var(--bubble-right-text);
+      opacity: 0.8;
+    }
+    .button-container {
+      height: 3.5em;
+      aspect-ratio: 1;
+      padding: 0.4em;
+      flex-shrink: 0;
+    }
+    .button {
+      height: 100%;
+      aspect-ratio: 1;
+      border: none;
+      background: var(--bubble-right);
+      border: 1px solid var(--bubble-right-border);
+      border-radius: 100%;
+      padding: 0.5em;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
   }
   .chat-bubble {
     background-color: var(--bubble-left);
@@ -192,12 +197,13 @@
     min-width: 50px;
     overflow-wrap: break-word;
     line-height: 1.3;
-  }
-  .chat-bubble.top-gap {
-    margin-top: 1em;
-  }
-  .chat-bubble a {
-    color: inherit;
+
+    &.top-gap {
+      margin-top: 1em;
+    }
+    a {
+      color: inherit;
+    }
   }
   .chat-name {
     padding: 1em 1.1em 0.3em;
@@ -219,12 +225,52 @@
     border: 0 solid var(--border);
     border-bottom-width: 1px;
     cursor: pointer;
-  }
-  .chat-row .cols {
-    display: flex;
-  }
-  .chat-row path {
-    fill: var(--text);
+
+    .cols {
+      display: flex;
+    }
+    path {
+      fill: var(--text);
+    }
+    &.chat-selected {
+      background-color: var(--bubble-left);
+      color: var(--bubble-left-text);
+    }
+    .date {
+      font-size: 0.9em;
+      opacity: 0.6;
+      display: flex;
+      justify-content: flex-end;
+      padding: 0 0.5em;
+    }
+    .truncate {
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      max-height: 3em;
+      line-height: 1.5em;
+      text-overflow: ellipsis;
+      white-space: normal;
+    }
+    .row-right {
+      flex-shrink: 0;
+      margin: 0.5em;
+      margin-right: 0;
+      display: flex;
+      align-items: center;
+    }
+    .badge {
+      aspect-ratio: 1;
+      height: 1.4em;
+      line-height: 1.4;
+      width: auto;
+      text-align: center;
+      /* padding: 0.1em; */
+      background-color: var(--alert);
+      border-radius: 100%;
+      color: var(--bg);
+    }
   }
   .chat-row .name,
   .header-container .name {
@@ -241,67 +287,28 @@
     text-overflow: ellipsis;
     white-space: normal;
   }
-  .chat-row.chat-selected {
-    background-color: var(--bubble-left);
-    color: var(--bubble-left-text);
-  }
-  .chat-row .date {
-    font-size: 0.9em;
-    opacity: 0.6;
-    display: flex;
-    justify-content: flex-end;
-    padding: 0 0.5em;
-  }
-  .chat-row .truncate {
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-    max-height: 3em;
-    line-height: 1.5em;
-    text-overflow: ellipsis;
-    white-space: normal;
-  }
-  .chat-row .row-right {
-    flex-shrink: 0;
-    margin: 0.5em;
-    margin-right: 0;
-    display: flex;
-    align-items: center;
-  }
-  .chat-row .badge {
-    aspect-ratio: 1;
-    height: 1.4em;
-    line-height: 1.4;
-    width: auto;
-    text-align: center;
-    /* padding: 0.1em; */
-    background-color: var(--alert);
-    border-radius: 100%;
-    color: var(--bg);
-  }
   .drawer {
     overflow-y: auto; /* Allows scrolling */
   }
   &.drawer-wide {
     display: flex;
-  }
-  &.drawer-wide .header-container .back {
-    opacity: 0;
-    pointer-events: none;
-  }
-  &.drawer-wide .drawer {
-    position: initial;
-    left: 0;
-    flex: 1;
-    min-width: 250px;
-    border: 0 solid var(--border);
-    border-right-width: 2px;
-  }
-  &.drawer-wide .chat-container {
-    position: initial;
-    left: 0;
-    flex: 2;
+    .header-container .back {
+      opacity: 0;
+      pointer-events: none;
+    }
+    .drawer {
+      position: initial;
+      left: 0;
+      flex: 1;
+      min-width: 250px;
+      border: 0 solid var(--border);
+      border-right-width: 2px;
+    }
+    .chat-container {
+      position: initial;
+      left: 0;
+      flex: 2;
+    }
   }
   .date-row {
     opacity: 0.5;
