@@ -11,11 +11,17 @@ export const ChatRow: FC<{
     className={`chat-row ${selected ? "chat-selected" : ""}`}
     onClick={onClick}
   >
-    {/* <!-- TODO: badge --> */}
-    <div className="row-right">
-      <div className="date">{timeSince(chat.lastMessageDate)}</div>
-      <div className="name">{chat.name}</div>
-      <div className="truncate">{chat.lastMessageText}</div>
+    <div className="date">{timeSince(chat.lastMessageDate)}</div>
+    <div className="cols">
+      <div className="row-left">
+        <div className="name">{chat.name}</div>
+        <div className="truncate">{chat.lastMessageText}</div>
+      </div>
+      {chat.unread && (
+        <div className="row-right">
+          <span className="badge">{chat.unread}</span>
+        </div>
+      )}
     </div>
   </div>
 );

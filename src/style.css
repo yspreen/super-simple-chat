@@ -10,6 +10,7 @@
   --bubble-right: hsl(195, 100%, 41.75%);
   --bubble-right-border: var(--border);
   --bubble-right-text: #f0f6f9;
+  --alert: hsl(0, 77%, 66%);
 
   background-color: var(--bg);
   color: var(--text);
@@ -30,6 +31,7 @@
   --bubble-right: hsl(195, 100%, 22.75%);
   --bubble-right-border: var(--border);
   --bubble-right-text: #f0f6f9;
+  --alert: hsl(0, 53%, 41%);
 }
 
 .drawer-container,
@@ -202,11 +204,12 @@
   align-self: flex-end;
 }
 .chat-row {
-  padding: 1em 1%;
-  padding-left: 1em;
+  padding: 1em 0.5em 1em 1em;
   border: 0 solid var(--border);
   border-bottom-width: 1px;
   cursor: pointer;
+}
+.chat-row .cols {
   display: flex;
 }
 .chat-row path {
@@ -247,7 +250,24 @@
   line-height: 1.5em;
   text-overflow: ellipsis;
   white-space: normal;
-  padding-right: 0.75em;
+}
+.chat-row .row-right {
+  flex-shrink: 0;
+  margin: 0.5em;
+  margin-right: 0;
+  display: flex;
+  align-items: center;
+}
+.chat-row .badge {
+  aspect-ratio: 1;
+  height: 1.4em;
+  line-height: 1.4;
+  width: auto;
+  text-align: center;
+  /* padding: 0.1em; */
+  background-color: var(--alert);
+  border-radius: 100%;
+  color: var(--bg);
 }
 .drawer {
   overflow-y: auto; /* Allows scrolling */

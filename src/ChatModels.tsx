@@ -15,6 +15,7 @@ export interface Chat {
   lastMessageDate: Date;
   name: string;
   authorNames: Record<string, string>;
+  unread?: number;
 }
 
 export interface ChatProps {

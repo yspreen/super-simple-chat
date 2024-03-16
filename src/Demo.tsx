@@ -103,6 +103,7 @@ export default function Demo() {
       },
     },
     {
+      unread: 3,
       name: "Chat With Alice",
       lastMessageDate: new Date(new Date().getTime() - 65 * 1000),
       lastMessageText:
