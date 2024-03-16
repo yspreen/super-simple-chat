@@ -1,4 +1,4 @@
-:root {
+.drawer-container {
   --bg: white;
   --bars-bg: hsl(195, 100%, 98.5%);
   --chat-bg: rgb(250, 250, 250);
@@ -10,22 +10,23 @@
   --bubble-right: hsl(195, 100%, 41.75%);
   --bubble-right-border: var(--border);
   --bubble-right-text: #f0f6f9;
+
+  background-color: var(--bg);
+  color: var(--text);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --bg: black;
-    --bars-bg: hsl(195, 70.94%, 9.07%);
-    --chat-bg: rgb(20, 20, 20);
-    --text: white;
-    --border: #fff3;
-    --bubble-left: hsl(195, 0%, 15%);
-    --bubble-left-border: var(--border);
-    --bubble-left-text: #c6eafb;
-    --bubble-right: hsl(195, 100%, 22.75%);
-    --bubble-right-border: var(--border);
-    --bubble-right-text: #f0f6f9;
-  }
+.drawer-container.dark {
+  --bg: black;
+  --bars-bg: hsl(195, 70.94%, 9.07%);
+  --chat-bg: rgb(20, 20, 20);
+  --text: white;
+  --border: #fff3;
+  --bubble-left: hsl(195, 0%, 15%);
+  --bubble-left-border: var(--border);
+  --bubble-left-text: #c6eafb;
+  --bubble-right: hsl(195, 100%, 22.75%);
+  --bubble-right-border: var(--border);
+  --bubble-right-text: #f0f6f9;
 }
 
 .drawer-container,

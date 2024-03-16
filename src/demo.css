@@ -1,13 +1,17 @@
-body {
+.demo {
   min-height: 100svh;
   display: flex;
   justify-content: center;
   align-items: center;
 
-  background-color: var(--bg);
-  color: var(--text);
+  background-color: white;
+  color: black;
 }
-body,
+.demo.dark {
+  background-color: black;
+  color: white;
+}
+.demo,
 input {
   font-family: "Inter", sans-serif;
   font-optical-sizing: auto;

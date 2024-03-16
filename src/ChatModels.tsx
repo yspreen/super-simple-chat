@@ -28,4 +28,5 @@ export interface ChatProps {
   showNamesRightSide?: boolean;
   inputWidgets?: ReactNode;
   matchers?: MatcherInterface<any>[];
+  darkMode?: boolean;
 }

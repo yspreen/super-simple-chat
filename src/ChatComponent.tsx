@@ -10,6 +10,7 @@ export const ChatComponent: FC<ChatProps> = ({
   selectedChatIdx,
   onSelectedIndexChange: setSelectedChatIdx,
   onDoSearch: doSearch,
+  darkMode = false,
   ...rest
 }: ChatProps) => {
   const [input, setInput] = useState("");
@@ -40,8 +41,8 @@ export const ChatComponent: FC<ChatProps> = ({
     <div
       ref={measuredRef}
       className={`drawer-container ${drawerOpen ? "drawer-open" : ""} ${
-        isWide ? "drawer-wide" : ""
-      }`}
+        darkMode ? "dark" : ""
+      } ${isWide ? "drawer-wide" : ""}`}
     >
       <ChatDrawer
         selectedChatIdx={selectedChatIdx ?? -1}

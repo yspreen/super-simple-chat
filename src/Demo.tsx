@@ -3,6 +3,7 @@ import { ChatComponent } from "./ChatComponent";
 import { Chat, ChatMessage } from "./ChatModels";
 import AttachFileIcon from "@mui/icons-material/AttachFile";
 import { UrlMatcher } from "interweave-autolink";
+import { DarkMode } from "@mui/icons-material";
 
 export default function Demo() {
   const [messages, setMessages] = useState([] as ChatMessage[]);
@@ -140,17 +141,26 @@ export default function Demo() {
   const widget = (
     <AttachFileIcon style={$widget} onClick={() => console.log("attach")} />
   );
+  const [darkMode, setDarkMode] = useState(false);
   return (
-    <ChatComponent
-      chats={chats}
-      messages={messages}
-      onInputSubmit={newMessage}
-      selectedChatIdx={index}
-      onSelectedIndexChange={setIndex}
-      onDoSearch={(val) => console.log("search:", val)}
-      inputWidgets={widget}
-      matchers={[new UrlMatcher("url")]}
-    />
+    <div className={`demo ${darkMode ? "dark" : ""}`}>
+      <div>
+        <span onClick={() => setDarkMode((v) => !v)}>
+          <DarkMode />
+        </span>
+        <ChatComponent
+          chats={chats}
+          messages={messages}
+          onInputSubmit={newMessage}
+          selectedChatIdx={index}
+          onSelectedIndexChange={setIndex}
+          onDoSearch={(val) => console.log("search:", val)}
+          inputWidgets={widget}
+          matchers={[new UrlMatcher("url")]}
+          darkMode={darkMode}
+        />
+      </div>
+    </div>
   );
 }
 
