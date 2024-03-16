@@ -14,6 +14,9 @@
   background-color: var(--bg);
   color: var(--text);
 }
+.drawer-container input {
+  color: var(--text);
+}
 
 .drawer-container.dark {
   --bg: black;
